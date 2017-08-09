@@ -49,4 +49,5 @@ export async function ls () {
     </table>
     `
   printTable(render(template, { rows }), styles)
+  console.log()
 }

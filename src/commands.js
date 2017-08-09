@@ -11,10 +11,12 @@ export async function add ([ key ]) {
   writeConfig({ ...config, [confKey]: { path } })
 }
 
-export async function rm (key) {
+export async function rm ([ key ]) {
   const config = await readConfig()
+  const path = process.cwd()
+  const confKey = key || basename(path)
 
-  writeConfig({ ...config, [key]: undefined })
+  writeConfig({ ...config, [confKey]: undefined })
 }
 
 export async function prune () {

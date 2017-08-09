@@ -1,3 +1,6 @@
 #! /usr/bin/env node
 
-console.log(process.argv.slice(2))
+const commands = require('../lib/commands')
+const [ command, ...args ] = process.argv.slice(2)
+
+commands[command](args)

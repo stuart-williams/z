@@ -24,3 +24,4 @@ SOURCES
 *.service
 
 lib
+.zconfig.json

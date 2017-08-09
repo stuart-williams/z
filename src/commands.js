@@ -14,7 +14,7 @@ export async function add ([ key ]) {
 export async function rm ([ key ]) {
   const config = await readConfig()
   const path = process.cwd()
-  const confKey = key || basename(path)
+  const confKey = key || Object.keys(config).find((key) => config[key].path === path)
 
   writeConfig({ ...config, [confKey]: undefined })
 }

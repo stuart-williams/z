@@ -30,17 +30,23 @@ export async function prune () {
 export async function ls () {
   const config = await readConfig()
   const rows = Object.keys(config).map((key) => ({ key, path: config[key].path }))
+  const styles = {
+    key: {
+      fontWeight: 'bold',
+      textAlign: 'right'
+    }
+  }
   const template = `
     <table>
       <tbody>
         {{#rows}}
         <tr>
-          <td>{{key}}</td>
+          <td class="key">{{key}}</td>
           <td>{{path}}</td>
         </tr>
         {{/rows}}
       </tbody>
     </table>
     `
-  printTable(render(template, { rows }), {})
+  printTable(render(template, { rows }), styles)
 }

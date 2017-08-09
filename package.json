@@ -1,7 +1,6 @@
 {
-  "name": "zed",
+  "name": "z",
   "version": "1.0.0",
-  "main": "src/index.js",
   "license": "MIT",
   "bin": "bin/index.js",
   "devDependencies": {
@@ -20,9 +19,10 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "scripts": {
+    "prebuild": "rm -rf lib",
     "build": "babel src/ -d lib/",
     "prepublish": "yarn run build",
-    "watch": "npm run build -- -w"
+    "watch": "yarn run build -- -w"
   },
   "dependencies": {
     "mustache": "^2.3.0",

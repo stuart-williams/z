@@ -3,27 +3,18 @@ import { basename } from 'path'
 import { render as printTable } from 'termtable'
 import { render } from 'mustache'
 
-export async function add () {
+export async function add ([ key ]) {
   const config = await readConfig()
   const path = process.cwd()
-  const key = basename(path)
+  const confKey = key || basename(path)
 
-  writeConfig({ ...config, [key]: { path } })
+  writeConfig({ ...config, [confKey]: { path } })
 }
 
-export async function remove (key) {
+export async function rm (key) {
   const config = await readConfig()
 
   writeConfig({ ...config, [key]: undefined })
-}
-
-export async function alias ([ key ]) {
-  const config = await readConfig()
-  const path = process.cwd()
-
-  if (!key) return console.log('Naaaah')
-
-  writeConfig({ ...config, [key]: { path } })
 }
 
 export async function prune () {

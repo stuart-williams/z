@@ -4,15 +4,10 @@ import { readConfig } from './utils'
 export default async function cd (key) {
   const config = await readConfig()
 
-  if (!config[key]) {
-    console.log('Naaaah')
-    process.exit(1)
-  }
-
-  const { path } = config[key]
+  if (!config[key]) process.exit()
 
   spawn('bash', ['-i'], {
-    cwd: path,
+    cwd: config[key].path,
     stdio: 'inherit'
   })
 }
